@@ -1,0 +1,456 @@
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  /* Làm tp lên đầu trang */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #ffecb4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(170, 125, 12);
+    border-radius: 10px;
+  }
+}
+.menubar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 209, 44);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  z-index: 99;
+  animation: fadeIn 4s;
+}
+.menubar2 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 209, 44);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  z-index: 99;
+  animation: fadeIn 4s;
+}
+.menubar li {
+  display: inline;
+  float: left;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+}
+.menubar2 li {
+  display: inline;
+  float: right;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+}
+.menubtn {
+  display: block;
+  padding: 8px;
+  margin: 5px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+.menubar li:hover,
+.menubar2 li:hover {
+  cursor: pointer;
+  background-color: rgb(255, 240, 71);
+}
+/*  */
+.bgimg {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+/*  */
+.leftarea {
+  position: fixed;
+  left: 0;
+  top: 53px;
+  background-color: rgb(255, 227, 128);
+  z-index: 98;
+  height: 100vh;
+  width: 400px;
+  font-family: "Typo Round Regular Demo";
+  font-size: 18px;
+}
+#filtertitle {
+  font-size: 24.2px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.checkboxes {
+  padding: 20px;
+  margin-top: -15px;
+}
+#stopfilter,
+#lbstopfilter {
+  float: right;
+}
+#lbstopfilter {
+  margin-right: 9px;
+}
+
+#starttext,
+#endtext {
+  display: inline;
+  margin: 23px;
+}
+#datestart,
+#dateend {
+  border-radius: 10px;
+  border: solid 2px rgb(170, 125, 12);
+  font-family: "Typo Round Regular Demo";
+  font-size: 18px;
+  height: 30px;
+  width: 145px;
+  margin-bottom: 10px;
+}
+
+.sliderdiv {
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.sliderdiv p {
+  margin-bottom: 3px;
+}
+.sliderdiv input {
+  display: inline;
+}
+#minout,
+#maxout {
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
+  border: 2px rgb(170, 125, 12) solid;
+  background-color: #ffbf00;
+  font-family: "Typo Round Regular Demo";
+  font-size: 15px;
+  text-align: right;
+}
+.slider {
+  width: 300px;
+  height: 15px;
+  margin-bottom: 20px;
+}
+#confirm {
+  margin-right: 10px;
+}
+#confirm,
+#search,
+#checkout {
+  font-family: "Montserrat Regular";
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 20px;
+  width: 120px;
+  height: 40px;
+  background-color: #ffbf00;
+  color: rgb(0, 0, 0);
+  border: 2px rgb(170, 125, 12) solid;
+  float: right;
+}
+#confirm:hover,
+#search:hover,
+#checkout:hover {
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+#checkout {
+  position: fixed;
+  bottom: 80px;
+  left: 100px;
+  width: 200px;
+  height: 50px;
+  font-size: 25px;
+}
+
+.checkoutdiv {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  height: 675px;
+  width: 1530px;
+  background-color: rgb(255, 209, 44);
+
+  top: 50px;
+  left: 0;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+  margin: 0;
+  text-align: center;
+}
+
+.checkoutdiv p {
+  margin: 10px;
+}
+.checkoutdiv input {
+  height: 30px;
+  width: 200px;
+  font-family: "Typo Round Regular Demo";
+  font-size: 18px;
+  border-radius: 10px;
+  border: 2px rgb(170, 125, 12) solid;
+  margin-bottom: 10px;
+}
+
+#checkouttext1 {
+  margin-top: 30px;
+}
+#checkouttext2 {
+  margin-bottom: 20px;
+}
+
+#checkoutreal,
+#back {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  font-family: "Montserrat Regular";
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 20px;
+  width: 160px;
+  height: 40px;
+  background-color: #ffbf00;
+  color: rgb(0, 0, 0);
+  border: 2px rgb(170, 125, 12) solid;
+}
+
+#checkoutreal:hover,
+#back:hover {
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+#back {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.rightarea {
+  width: 1110px;
+  margin-left: 400px;
+  padding-top: 45px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Location */
+.dest {
+  margin: 18px 10px;
+  height: 350px;
+  width: 350px;
+  border: solid 3px rgb(170, 125, 12);
+  z-index: 80;
+  background-color: rgb(255, 227, 128);
+  border-radius: 15px;
+}
+.flag {
+  width: 70px;
+  margin-left: 8px;
+  margin-top: 8px;
+  position: absolute;
+}
+.destpic {
+  width: 100%;
+  height: 200px;
+  padding: 8px;
+  z-index: 80;
+  border-radius: 15px;
+}
+.destpic:hover {
+  cursor: pointer;
+  padding: 2px;
+}
+.destname,
+.destdesc,
+.thePage1,
+.thePage2 {
+  font-family: "Typo Round Regular Demo";
+  font-size: 18px;
+  width: 100%;
+  margin: 0;
+}
+.destname {
+  margin-top: -5px;
+  margin-bottom: 4px;
+  text-align: center;
+  border: 1px rgb(170, 125, 12) solid;
+  background-color: rgb(170, 125, 12);
+  color: white;
+}
+.destdesc {
+  padding-left: 10px;
+  list-style: none;
+}
+
+.destPage {
+  position: fixed;
+  top: 60px;
+  height: 655px;
+  width: 1105px;
+  z-index: 98;
+  background-color: rgb(255, 227, 128);
+  border: 5px rgb(170, 125, 12) solid;
+  border-radius: 30px;
+  display: none;
+  overflow: hidden;
+}
+
+.destPageOff {
+  border-radius: 100%;
+  border: 5px rgb(170, 125, 12) solid;
+  color: black;
+  background-color: white;
+  height: 45px;
+  width: 45px;
+  font-size: 20px;
+  padding-left: 7px;
+  position: fixed;
+  top: 75px;
+  right: 25px;
+  z-index: 99;
+}
+.destPageOff:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.destPagePic {
+  border-radius: 15px;
+  height: 300px;
+  width: 570px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.thePage1 {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 32px;
+  width: 570px;
+  margin-left: 20px;
+  text-align: center;
+}
+.thePage2 {
+  list-style: none;
+  font-size: 21px;
+}
+
+.general {
+  width: 615px;
+  height: 100%;
+  border-right: 5px rgb(170, 125, 12) solid;
+}
+
+.roomtypediv {
+  float: right;
+  width: 480px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #ffca2c;
+}
+
+.roomtype img {
+  width: 400px;
+  margin-top: 15px;
+  margin-left: 15px;
+  border-radius: 15px;
+}
+
+.roomtype {
+  margin: 20px;
+  width: 440px;
+  height: 440px;
+  background: #ffd865;
+  border: 4px rgb(170, 125, 12) solid;
+  border-radius: 15px;
+}
+
+.roomdetail {
+  font-family: "Typo Round Regular Demo";
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 3px;
+  margin-left: 20px;
+}
+
+.available {
+  font-family: "Typo Round Regular Demo";
+  font-size: 18px;
+  margin: 0;
+  margin-left: 20px;
+}
+
+.roomname {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: "Typo Round Regular Demo";
+}
+
+#roomtypeA {
+  height: 415px;
+}
+#roomtypeA img {
+  margin-top: 10px;
+}
+#roomtypeB img {
+  margin-top: 10px;
+}
+#roomtypeC {
+  height: 450px;
+}
+#roomtypeD {
+  height: 395px;
+}
+#roomtypeD {
+  margin-top: 10px;
+}
+#roomtypeE {
+  height: 450px;
+}
+#roomtypeE img {
+  margin-top: 10px;
+}
+.select {
+  position: relative;
+  float: right;
+  margin: 10px;
+  bottom: 35px;
+  font-family: "Montserrat Regular";
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 20px;
+  width: 80px;
+  height: 30px;
+  background-color: #ffecb4;
+  color: rgb(0, 0, 0);
+  border: 3px rgb(170, 125, 12) solid;
+}
+.select:hover {
+  background-color: rgb(255, 240, 71);
+  cursor: pointer;
+}
+
+.grayout {
+  filter: grayscale(1);
+}

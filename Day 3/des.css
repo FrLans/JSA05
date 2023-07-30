@@ -1,0 +1,10 @@
+#name, .add{
+    text-align: center;
+    position: fixed;
+}
+#name{
+    left: 620px;
+}
+.add{
+    left: 800px;
+}

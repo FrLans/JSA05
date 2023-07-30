@@ -1,0 +1,88 @@
+.menubar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 209, 44);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  z-index: 99;
+}
+.menubar2 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 209, 44);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  z-index: 99;
+}
+.menubar li {
+  display: inline;
+  float: left;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+}
+.menubar2 li {
+  display: inline;
+  float: right;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+}
+.menubtn {
+  display: block;
+  padding: 8px;
+  margin: 5px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+.menubar li:hover,
+.menubar2 li:hover {
+  cursor: pointer;
+  background-color: rgb(255, 240, 71);
+}
+/*  */
+.bgimg {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0.25;
+  z-index: 0;
+}
+/*  */
+.map {
+  background-color: rgb(155, 122, 37);
+  height: 400px;
+  position: fixed;
+  z-index: 98;
+  top: 100px;
+  left: 70px;
+}
+.origin {
+  position: fixed;
+  z-index: 98;
+  top: 100px;
+  right: 70px;
+  width: 620px;
+  height: 400px;
+  background-color: rgb(255, 209, 44);
+  font-family: "Typo Round Regular Demo";
+  padding-left: 20px;
+  padding-right: 20px;
+}
+h1 {
+  margin-bottom: 10px;
+}
+.origin p {
+  font-family: "Montserrat Regular";
+  font-size: 20px;
+  display: inline;
+}
+.tgh {
+  font-style: italic;
+}

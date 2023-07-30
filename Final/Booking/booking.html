@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./booking.css" />
+  </head>
+  <body>
+    <!--
+        Travel
+        Local storage cart: T/gian, địa điểm đi
+        Trang đăng nhập/đăng ký (hoặt động đc là optional)
+        Trang chủ: Giới thiệu trang, header, footer
+        Trang về các địa điểm ksan (gồm tên kh - số đt khách/chỗ đó - tgian - giá - các địa điểm xquanh - facility - số phòng trống/ko)
+        Chọn qgia ở đâu
+        Filter search
+        JS: Filter, có vụ book phòng tử tế (localStorage)
+        Tối T5 hàng tuần upd
+    -->
+    <!-- Phần cố định -->
+    <ul class="menubar">
+      <li>
+        <a href="/Final/Index/index.html" class="menubtn" id="home">Home</a>
+      </li>
+      <li>
+        <a href="/Final/About us/about.html" class="menubtn" id="about"
+          >About us</a
+        >
+      </li>
+      <li>
+        <a href="/Final/Booking/booking.html" class="menubtn" id="booksite"
+          >Book</a
+        >
+      </li>
+    </ul>
+    <ul class="menubar2">
+      <li>
+        <a href="/Final/Login/login.html" class="menubtn" id="login">Login</a>
+      </li>
+      <li><a href="" class="menubtn" id="lang">Language</a></li>
+    </ul>
+    <img
+      src="/Final/Index/Index Images/indexbg.jpg"
+      alt="Background Image"
+      class="bgimg"
+    />
+    <!-- Mảng account chứa các obj -->
+    <!-- Phần thanh bên trái -->
+    <div class="leftarea">
+      <div>
+        <p id="filtertitle">Hotel Filter</p>
+      </div>
+      <div class="checkboxes">
+        <input
+          type="radio"
+          id="northAmerica"
+          value="northAmerica"
+          name="place"
+        />
+        <label for="northAmerica" id="lbnorthAmerica">N • America</label>
+
+        <input
+          type="radio"
+          id="southAmerica"
+          value="southAmerica"
+          name="place"
+        />
+        <label for="southAmerica" id="lbsouthAmerica">S • America</label>
+
+        <input type="radio" id="asia" value="asia" name="place" />
+        <label for="asia" id="lbasia">Asia</label><br />
+
+        <input type="radio" id="europe" value="europe" name="place" />
+        <label for="europe" id="lbeurope">Europe           </label>
+
+        <input type="radio" id="oceania" value="oceania" name="place" />
+        <label for="oceania" id="lboceania">Oceania     </label>
+
+        <input type="radio" id="africa" value="africa" name="place" />
+        <label for="africa" id="lbafrica">Africa</label><br />
+
+        <input type="radio" id="classic" value="classic" name="place" />
+        <label for="classic" id="lbclassic">Classic              </label>
+
+        <input type="radio" id="disjointed" value="disjointed" name="place" />
+        <label for="disjointed" id="lbdisjointed">Disjointed    </label>
+
+        <input type="radio" id="deluxe" value="deluxe" name="place" />
+        <label for="deluxe" id="lbdeluxe">Deluxe</label><br />
+
+        <input type="radio" id="cruise" value="cruise" name="place" />
+        <label for="cruise" id="lbcruise">Cruise     </label>
+
+        <input type="radio" id="bustle" value="bustle" name="place" />
+        <label for="bustle" id="lbbustle">Bustle               </label>
+
+        <input type="radio" id="tranquil" value="tranquil" name="place" />
+        <label for="tranquil" id="lbtranquil">Tranquil</label><br />
+
+        <label for="stopfilter" id="lbstopfilter"> Stop Filter</label>
+        <input
+          type="radio"
+          id="stopfilter"
+          value="stopfilter"
+          name="place"
+        /><br />
+      </div>
+      <div id="timeset">
+        <p id="starttext">Start of Book Date:</p>
+        <input type="date" name="datestart" id="datestart" max="2024-12-31" />
+        <br />
+        <p id="endtext">End of Book Date:  </p>
+        <input type="date" name="dateend" id="dateend" max="2024-12-31" />
+        <button id="confirm">Confirm</button>
+      </div>
+      <div class="sliderdiv">
+        <p id="mintext">Minimum Price ($/night)</p>
+        <input type="range" min="35" max="363" class="slider" id="min" />
+        <input id="minout" type="number" min="35" max="363" />
+        <br />
+        <p id="maxtext">Maximum Price ($/night)</p>
+        <input type="range" min="35" max="363" class="slider" id="max" />
+        <input id="maxout" type="number" min="35" max="363" />
+        <button id="search">Search</button>
+      </div>
+      <button id="checkout">Check out</button>
+    </div>
+    <div class="rightarea">
+      <div
+        class="dest"
+        id="berlin"
+        place1="europe"
+        place2="classic"
+        place3="bustle"
+      >
+        <img
+          src="/Final/Booking/Booking Images/de_flag.png"
+          alt="Germany"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/berlin_main.jpg"
+          alt="Berlin"
+          id="berlinPage"
+        />
+        <p class="destname" id="berlin1">Berlin, Germany</p>
+        <ul class="destdesc">
+          <li id="berlin2">- Total Rooms: 280</li>
+          <li id="berlin3">- Hotel Type:     Classic</li>
+          <li id="berlin4">- Room Types: Single, Twin, Suite</li>
+          <li id="berlin5">- Address:             18 Zufällige Straße</li>
+          <li id="berlin6">- Hotline:               +49 900-3-082103</li>
+        </ul>
+      </div>
+      <div class="destPage" id="berlinTrue">
+        <button class="destPageOff" id="berlinOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/berlin_main.jpg"
+            alt="Berlin"
+          />
+          <p class="thePage1" id="berlinText1">Berlin, Germany</p>
+          <ul class="thePage2">
+            <li id="berlinText2">- Total Rooms: 280</li>
+            <li id="berlinText3">- Hotel Type:     Classic</li>
+            <li id="berlinText4">
+              - Facilities:            Pool, Sky Bar; Buffet Breakfast for Suite
+            </li>
+            <li id="berlinText5">
+              - Hotspots:            Berlin Wall, Holocaust Monument
+            </li>
+            <li id="berlinText6">- Address:             18 Zufällige Straße</li>
+            <li id="berlinText7">- Hotline:               +49 900-3-082103</li>
+            <li id="berlinText8">
+              - Timezone:       UTC +2 / Central European Summer Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div class="roomtype" price="35" roomname="Berlin Single">
+            <img src="/Final/Booking/Booking Images/berlin_single.jpg" />
+            <p class="roomname" id="berlinText9">Single Room</p>
+            <p class="roomdetail" id="berlinText10">Capacity: 1-2 people</p>
+            <p class="roomdetail" id="berlinText11">Total Rooms: 120</p>
+            <p class="roomdetail" id="berlinText12">Price: $35/night</p>
+            <p class="available" id="berlinText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="berlinText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeA"
+            price="58"
+            roomname="Berlin Twin"
+          >
+            <img src="/Final/Booking/Booking Images/berlin_twin.jpg" />
+            <p class="roomname" id="berlinText15">Twin Room (2 Single Beds)</p>
+            <p class="roomdetail" id="berlinText16">Capacity: 2 people</p>
+            <p class="roomdetail" id="berlinText17">Total Rooms: 80</p>
+            <p class="roomdetail" id="berlinText18">Price: $58/night</p>
+            <p class="available" id="berlinText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="berlinText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeB"
+            price="219"
+            roomname="Berlin Suite"
+          >
+            <img src="/Final/Booking/Booking Images/berlin_suite.jpg" />
+            <p class="roomname" id="berlinText21">
+              Suite (1 Single + 2 Double Beds)
+            </p>
+            <p class="roomdetail" id="berlinText22">Capacity: 5-7 people</p>
+            <p class="roomdetail" id="berlinText23">Total Rooms: 80</p>
+            <p class="roomdetail" id="berlinText24">Price: $219/night</p>
+            <p class="available" id="berlinText25">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="berlinText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="cairo"
+        place1="asia"
+        place2="disjointed"
+        place3="tranquil"
+      >
+        <img
+          src="/Final/Booking/Booking Images/eg_flag.png"
+          alt="Egypt"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/cairo_main.jpg"
+          alt="Cairo"
+          id="cairoPage"
+        />
+        <p class="destname" id="cairo1">Cairo, Egypt</p>
+        <ul class="destdesc">
+          <li id="cairo2">- Total Rooms: 45</li>
+          <li id="cairo3">- Hotel Type:     Disjointed Buildings</li>
+          <li id="cairo4">- Room Types: Bungalow, Villa</li>
+          <li id="cairo5">- Address:             1 Sharie Almisriiyn</li>
+          <li id="cairo6">- Hotline:               +20 2-3025-3403</li>
+        </ul>
+      </div>
+      <div class="destPage" id="cairoTrue">
+        <button class="destPageOff" id="cairoOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/cairo_main.jpg"
+            alt="Cairo"
+          />
+          <p class="thePage1" id="cairoText1">Cairo, Egypt</p>
+          <ul class="thePage2">
+            <li id="cairoText2">- Total Rooms: 45</li>
+            <li id="cairoText3">- Hotel Type:     Disjointed Buildings</li>
+            <li id="cairoText4">
+              - Facilities:            Pool, Pool Bar, Parking Lot
+            </li>
+            <li id="cairoText5">
+              - Hotspots:            Pyramids, Al-Azhar Mosque, Al-Azhar Park
+            </li>
+            <li id="cairoText6">- Address:             1 Sharie Almisriiyn</li>
+            <li id="cairoText7">- Hotline:               +20 2-3025-3403</li>
+            <li id="cairoText8">
+              - Timezone:       UTC +3 / Eastern European Summer Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div class="roomtype" price="84" roomname="Cairo Bungalow">
+            <img src="/Final/Booking/Booking Images/cairo_bungalow.jpg" />
+            <p class="roomname" id="cairoText9">Bungalow</p>
+            <p class="roomdetail" id="cairoText10">Capacity: 3-4 people</p>
+            <p class="roomdetail" id="cairoText11">Total Rooms: 30</p>
+            <p class="roomdetail" id="cairoText12">Price: $84/night</p>
+            <p class="available" id="cairoText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="cairoText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeB"
+            price="219"
+            roomname="Cairo Villa"
+          >
+            <img src="/Final/Booking/Booking Images/cairo_villa.jpg" />
+            <p class="roomname" id="cairoText15">Villa</p>
+            <p class="roomdetail" id="cairoText16">Capacity: 5-7 people</p>
+            <p class="roomdetail" id="cairoText17">Total Rooms: 15</p>
+            <p class="roomdetail" id="cairoText18">Price: $219/night</p>
+            <p class="available" id="cairoText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="cairoText20">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="capetown"
+        place1="africa"
+        place2="deluxe"
+        place3="tranquil"
+      >
+        <img
+          src="/Final/Booking/Booking Images/za_flag.png"
+          alt="South Africa"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/capetown_main.jpg"
+          alt="Cape Town"
+          id="capePage"
+        />
+        <p class="destname" id="cape1">Cape Town, South Africa</p>
+        <ul class="destdesc">
+          <li id="cape2">- Total Rooms: 170</li>
+          <li id="cape3">- Hotel Type:     Deluxe</li>
+          <li id="cape4">- Room Types: Suite, Pres Suite, Cabana</li>
+          <li id="cape5">- Address:             224-228 Paleisweg</li>
+          <li id="cape6">- Hotline:               +27 21-339-3014</li>
+        </ul>
+      </div>
+      <div class="destPage" id="capeTrue">
+        <button class="destPageOff" id="capeOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/capetown_main.jpg"
+            alt="Cape Town"
+          />
+          <p class="thePage1" id="capeText1">Cape Town, South Africa</p>
+          <ul class="thePage2">
+            <li id="capeText2">- Total Rooms: 170</li>
+            <li id="capeText3">- Hotel Type:     Deluxe</li>
+            <li id="capeText4">- Facilities:            Pool, Sky Bar, Gym</li>
+            <li id="capeText5">
+              - Hotspots:            Table Mountain, Kirstenbosch Gardens
+            </li>
+            <li id="capeText6">- Address:             224-228 Paleisweg</li>
+            <li id="capeText7">- Hotline:               +27 21-339-3014</li>
+            <li id="capeText8">
+              - Timezone:       UTC +2 / South Africa Standard Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div
+            class="roomtype"
+            id="roomtypeC"
+            price="152"
+            roomname="Cape Town Suite"
+          >
+            <img src="/Final/Booking/Booking Images/cape_suite.jpg" />
+            <p class="roomname" id="capeText9">Suite (2 Double Beds)</p>
+            <p class="roomdetail" id="capeText10">Capacity: 4-5 people</p>
+            <p class="roomdetail" id="capeText11">Total Rooms: 70</p>
+            <p class="roomdetail" id="capeText12">Price: $152/night</p>
+            <p class="available" id="capeText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="capeText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeD"
+            price="363"
+            roomname="Cape Town President Suite"
+          >
+            <img src="/Final/Booking/Booking Images/cape_pres.jpg" />
+            <p class="roomname" id="capeText15">President Suite</p>
+            <p class="roomdetail" id="capeText16">Capacity: 6-8 people</p>
+            <p class="roomdetail" id="capeText17">Total Rooms: 35</p>
+            <p class="roomdetail" id="capeText18">Price: $363/night</p>
+            <p class="available" id="capeText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="capeText20">
+              Select
+            </button>
+          </div>
+
+          <div class="roomtype grayout" id="roomtypeA">
+            <img src="/Final/Booking/Booking Images/cape_cabana.jpg" />
+            <p class="roomname" id="capeText21">Cabana (Double Bed + Pool)</p>
+            <p class="roomdetail" id="capeText22">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="capeText23">Total Rooms: 65</p>
+            <p class="roomdetail" id="capeText24">Price: $45/night</p>
+            <p class="available" id="capeText25">Available: Sold out</p>
+            <button class="select roomdetail" disabled id="capeText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="dubai"
+        place1="asia"
+        place2="deluxe"
+        place3="bustle"
+      >
+        <img
+          src="/Final/Booking/Booking Images/ua_flag.png"
+          alt="United Arab Emirates"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/dubai_main.jpg"
+          alt="Dubai"
+          id="dubaiPage"
+        />
+        <p class="destname" id="dubai1">Dubai, United Arab Emirates</p>
+        <ul class="destdesc">
+          <li id="dubai2">- Total Rooms: 520</li>
+          <li id="dubai3">- Hotel Type:     Deluxe</li>
+          <li id="dubai4">- Room Types: Jr Suite, Suite, Pres Suite</li>
+          <li id="dubai5">- Address:             47B Sharie Alearab</li>
+          <li id="dubai6">- Hotline:               +971 04-239-2411</li>
+        </ul>
+      </div>
+      <div class="destPage" id="dubaiTrue">
+        <button class="destPageOff" id="dubaiOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/dubai_main.jpg"
+            alt="Dubai"
+          />
+          <p class="thePage1" id="dubaiText1">Dubai, United Arab Emirates</p>
+          <ul class="thePage2">
+            <li id="dubaiText2">- Total Rooms: 520</li>
+            <li id="dubaiText3">- Hotel Type:     Deluxe</li>
+            <li id="dubaiText4">
+              - Facilities:            Pool, Sky Bar, Gym, Spa, Library
+            </li>
+            <li id="dubaiText5">
+              - Hotspots:            Burj Khalifa, Palm Jumeirah, Dubai Frame
+            </li>
+            <li id="dubaiText6">- Address:             47B Sharie Alearab</li>
+            <li id="dubaiText7">- Hotline:               +971 04-239-2411</li>
+            <li id="dubaiText8">
+              - Timezone:       UTC +4 / Gulf Standard Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div
+            class="roomtype"
+            id="roomtypeC"
+            price="84"
+            roomname="Dubai Junior Suite"
+          >
+            <img src="/Final/Booking/Booking Images/dubai_jr.jpg" />
+            <p class="roomname" id="dubaiText9">
+              Junior Suite (1 Single + 1 Double Bed)
+            </p>
+            <p class="roomdetail" id="dubaiText10">Capacity: 3-4 people</p>
+            <p class="roomdetail" id="dubaiText11">Total Rooms: 140</p>
+            <p class="roomdetail" id="dubaiText12">Price: $84/night</p>
+            <p class="available" id="dubaiText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="dubaiText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeE"
+            price="219"
+            roomname="Dubai Suite"
+          >
+            <img src="/Final/Booking/Booking Images/dubai_suite.jpeg" />
+            <p class="roomname" id="dubaiText15">Suite (3 Double Beds)</p>
+            <p class="roomdetail" id="dubaiText16">Capacity: 6-8 people</p>
+            <p class="roomdetail" id="dubaiText17">Total Rooms: 300</p>
+            <p class="roomdetail" id="dubaiText18">Price: $219/night</p>
+            <p class="available" id="dubaiText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="dubaiText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeD"
+            price="363"
+            roomname="Dubai President Suite"
+          >
+            <img src="/Final/Booking/Booking Images/dubai_pres.jpg" />
+            <p class="roomname" id="dubaiText21">President Suite</p>
+            <p class="roomdetail" id="dubaiText22">Capacity: 6-8 people</p>
+            <p class="roomdetail" id="dubaiText23">Total Rooms: 80</p>
+            <p class="roomdetail" id="dubaiText24">Price: $363/night</p>
+            <p class="available" id="dubaiText25">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="dubaiText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="halong"
+        place1="asia"
+        place2="cruise"
+        place3="tranquil"
+      >
+        <img
+          src="/Final/Booking/Booking Images/vn_flag.png"
+          alt="Vietnam"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/halong_main.jpg"
+          alt="Hạ Long"
+          id="haloPage"
+        />
+        <p class="destname" id="halo1">Ha Long, Vietnam</p>
+        <ul class="destdesc">
+          <li id="halo2">- Total Rooms: 80</li>
+          <li id="halo3">- Hotel Type:     Cruise Ships</li>
+          <li id="halo4">- Room Types: Inside, Balcony, Suite</li>
+          <li id="halo5">- Address:             140 Hoàng Phúc Lam</li>
+          <li id="halo6">- Hotline:               +84 912-253-231</li>
+        </ul>
+      </div>
+      <div class="destPage" id="haloTrue">
+        <button class="destPageOff" id="haloOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/halong_main.jpg"
+            alt="Halo"
+          />
+          <p class="thePage1" id="haloText1">Ha Long, Vietnam</p>
+          <ul class="thePage2">
+            <li id="haloText2">- Total Rooms: 80</li>
+            <li id="haloText3">- Hotel Type:     Cruise Ships</li>
+            <li id="haloText4">
+              - Facilities:            Bar, Spa, Row Boats, Meals Included
+            </li>
+            <li id="haloText5">- Hotspots:            Ha Long Bay</li>
+            <li id="haloText6">- Address:              140 Hoàng Phúc Lam</li>
+            <li id="haloText7">- Hotline:               +84 912-253-231</li>
+            <li id="haloText8">- Timezone:       UTC +7 / Indochina Time</li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div
+            class="roomtype"
+            id="roomtypeC"
+            price="84"
+            roomname="Ha Long Inside"
+          >
+            <img src="/Final/Booking/Booking Images/halo_inside.jpg" />
+            <p class="roomname" id="haloText9">Inside (2 Single Beds)</p>
+            <p class="roomdetail" id="haloText10">Capacity: 2 people</p>
+            <p class="roomdetail" id="haloText11">Total Rooms: 40</p>
+            <p class="roomdetail" id="haloText12">Price: $84/night</p>
+            <p class="available" id="haloText13">Available: May only</p>
+            <button class="select roomdetail" avabtn="halo" id="haloText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeE"
+            price="109"
+            roomname="Ha Long Balcony"
+          >
+            <img src="/Final/Booking/Booking Images/halo_balcony.jpg" />
+            <p class="roomname" id="haloText15">Balcony (1 Double Bed)</p>
+            <p class="roomdetail" id="haloText16">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="haloText17">Total Rooms: 25</p>
+            <p class="roomdetail" id="haloText18">Price: $109/night</p>
+            <p class="available" id="haloText19">Available: May only</p>
+            <button class="select roomdetail" avabtn="halo" id="haloText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeD"
+            price="152"
+            roomname="Ha Long Suite"
+          >
+            <img src="/Final/Booking/Booking Images/halo_suite.jpg" />
+            <p class="roomname" id="haloText21">Suite (2 Double Beds)</p>
+            <p class="roomdetail" id="haloText22">Capacity: 4-5 people</p>
+            <p class="roomdetail" id="haloText23">Total Rooms: 15</p>
+            <p class="roomdetail" id="haloText24">Price: $152/night</p>
+            <p class="available" id="haloText25">Available: May only</p>
+            <button class="select roomdetail" avabtn="halo" id="haloText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="lasvegas"
+        place1="northAmerica"
+        place2="classic"
+        place3="bustle"
+      >
+        <img
+          src="/Final/Booking/Booking Images/us_flag.png"
+          alt="United States"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/lasvegas_main.jpg"
+          alt="Las Vegas"
+          id="lasPage"
+        />
+        <p class="destname" id="las1">Las Vegas, United States</p>
+        <ul class="destdesc">
+          <li id="las2">- Total Rooms: 260</li>
+          <li id="las3">- Hotel Type:     Classic</li>
+          <li id="las4">- Room Types: Single, Double, Jr Suite</li>
+          <li id="las5">- Address:             38 Norville Boulevard</li>
+          <li id="las6">- Hotline:               +1 702-593-9037</li>
+        </ul>
+      </div>
+      <div class="destPage" id="lasTrue">
+        <button class="destPageOff" id="lasOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/lasvegas_main.jpg"
+            alt="Las Vegas"
+          />
+          <p class="thePage1" id="lasText1">Las Vegas, United States</p>
+          <ul class="thePage2">
+            <li id="lasText2">- Total Rooms: 260</li>
+            <li id="lasText3">- Hotel Type:     Classic</li>
+            <li id="lasText4">- Facilities:            Pool, Sky Bar, Gym</li>
+            <li id="lasText5">
+              - Hotspots:            The Bellagio, Fremont Street
+            </li>
+            <li id="lasText6">- Address:              38 Norville Boulevard</li>
+            <li id="lasText7">- Hotline:               +1 702-593-9037</li>
+            <li id="lasText8">
+              - Timezone:       UTC -7 / Pacific Daylight Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div
+            class="roomtype"
+            id="roomtypeC"
+            price="35"
+            roomname="Las Vegas Single"
+          >
+            <img src="/Final/Booking/Booking Images/las_single.jpg" />
+            <p class="roomname" id="lasText9">Single Room</p>
+            <p class="roomdetail" id="lasText10">Capacity: 1 people</p>
+            <p class="roomdetail" id="lasText11">Total Rooms: 70</p>
+            <p class="roomdetail" id="lasText12">Price: $35/night</p>
+            <p class="available" id="lasText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="lasText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeE"
+            price="58"
+            roomname="Las Vegas Double"
+          >
+            <img src="/Final/Booking/Booking Images/las_double.jpg" />
+            <p class="roomname" id="lasText15">Double</p>
+            <p class="roomdetail" id="lasText16">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="lasText17">Total Rooms: 150</p>
+            <p class="roomdetail" id="lasText18">Price: $58/night</p>
+            <p class="available" id="lasText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="lasText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeB"
+            price="84"
+            roomname="Las Vegas Junior Suite"
+          >
+            <img src="/Final/Booking/Booking Images/las_junior.jpg" />
+            <p class="roomname" id="lasText21">
+              Junior Suite (1 Single + 1 Double Bed)
+            </p>
+            <p class="roomdetail" id="lasText22">Capacity: 3-4 people</p>
+            <p class="roomdetail" id="lasText23">Total Rooms: 40</p>
+            <p class="roomdetail" id="lasText24">Price: $84/night</p>
+            <p class="available" id="lasText25">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="lasText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="paris"
+        place1="europe"
+        place2="classic"
+        place3="bustle"
+      >
+        <img
+          src="/Final/Booking/Booking Images/fr_flag.png"
+          alt="France"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/paris_main.jpeg"
+          alt="Paris"
+          id="parisPage"
+        />
+        <p class="destname" id="paris1">Paris, France</p>
+        <ul class="destdesc">
+          <li id="paris2">- Total Rooms: 300</li>
+          <li id="paris3">- Hotel Type:     Classic</li>
+          <li id="paris4">- Room Types: Single, Twin, Suite</li>
+          <li id="paris5">- Address:             418 Belle Rue</li>
+          <li id="paris6">- Hotline:               +33 1-20-49-23-48</li>
+        </ul>
+      </div>
+      <div class="destPage" id="parisTrue">
+        <button class="destPageOff" id="parisOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/paris_main.jpeg"
+            alt="Paris"
+          />
+          <p class="thePage1" id="parisText1">Paris, France</p>
+          <ul class="thePage2">
+            <li id="parisText2">- Total Rooms: 300</li>
+            <li id="parisText3">- Hotel Type:     Classic</li>
+            <li id="parisText4">- Facilities:            Bar, Gym, Library</li>
+            <li id="parisText5">
+              - Hotspots:            Eiffel Tower, The Louvre, Notre Dame
+            </li>
+            <li id="parisText6">- Address:               418 Belle Rue</li>
+            <li id="parisText7">- Hotline:               +33 1-20-49-23-48</li>
+            <li id="parisText8">
+              - Timezone:       UTC +2 / Central European Summer Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div class="roomtype" price="35" roomname="Paris Single">
+            <img src="/Final/Booking/Booking Images/berlin_single.jpg" />
+            <p class="roomname" id="parisText9">Single Room</p>
+            <p class="roomdetail" id="parisText10">Capacity: 1-2 people</p>
+            <p class="roomdetail" id="parisText11">Total Rooms: 100</p>
+            <p class="roomdetail" id="parisText12">Price: $35/night</p>
+            <p class="available" id="parisText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="parisText14">
+              Select
+            </button>
+          </div>
+
+          <div class="roomtype" id="roomtypeA" price="58" roomname="Paris Twin">
+            <img src="/Final/Booking/Booking Images/berlin_twin.jpg" />
+            <p class="roomname" id="parisText15">Twin Room (2 Single Beds)</p>
+            <p class="roomdetail" id="parisText16">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="parisText17">Total Rooms: 130</p>
+            <p class="roomdetail" id="parisText18">Price: $58/night</p>
+            <p class="available" id="parisText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="parisText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeB"
+            price="219"
+            roomname="Paris Suite"
+          >
+            <img src="/Final/Booking/Booking Images/berlin_suite.jpg" />
+            <p class="roomname" id="parisText21">
+              Suite (1 Single + 2 Double Beds)
+            </p>
+            <p class="roomdetail" id="parisText22">Capacity: 5-7 people</p>
+            <p class="roomdetail" id="parisText23">Total Rooms: 70</p>
+            <p class="roomdetail" id="parisText24">Price: $219/night</p>
+            <p class="available" id="parisText25">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="parisText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="rio"
+        place1="southAmerica"
+        place2="classic"
+        place3="tranquil"
+      >
+        <img
+          src="/Final/Booking/Booking Images/br_flag.png"
+          alt="Brazil"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/rio_main.jpg"
+          alt="Rio de Janeiro"
+          id="rioPage"
+        />
+        <p class="destname" id="rio1">Rio de Janeiro, Brazil</p>
+        <ul class="destdesc">
+          <li id="rio2">- Total Rooms: 130</li>
+          <li id="rio3">- Hotel Type:     Classic</li>
+          <li id="rio4">- Room Types: Single, Double, Cabana</li>
+          <li id="rio5">- Address:             92A Endereço Falso</li>
+          <li id="rio6">- Hotline:               +55 955-436-6949</li>
+        </ul>
+      </div>
+      <div class="destPage" id="rioTrue">
+        <button class="destPageOff" id="rioOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/rio_main.jpg"
+            alt="Rio de Janeiro"
+          />
+          <p class="thePage1" id="rioText1">Rio de Janeiro, Brazil</p>
+          <ul class="thePage2">
+            <li id="rioText2">- Total Rooms: 130</li>
+            <li id="rioText3">- Hotel Type:     Classic</li>
+            <li id="rioText4">- Facilities:            Pool, Gym, Spa</li>
+            <li id="rioText5">
+              - Hotspots:            Cristo Redentor, Tijuca National Park
+            </li>
+            <li id="rioText6">- Address:               92A Endereço Falso</li>
+            <li id="rioText7">- Hotline:               +55 955-436-6949</li>
+            <li id="rioText8">- Timezone:       UTC -3 / Brasilia Time</li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div class="roomtype" price="35" roomname="Rio de Janeiro Single">
+            <img src="/Final/Booking/Booking Images/rio_single.jpg" />
+            <p class="roomname" id="rioText9">Single Room</p>
+            <p class="roomdetail" id="rioText10">Capacity: 1 people</p>
+            <p class="roomdetail" id="rioText11">Total Rooms: 50</p>
+            <p class="roomdetail" id="rioText12">Price: $35/night</p>
+            <p class="available" id="rioText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="rioText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeB"
+            price="58"
+            roomname="Rio de Janeiro Double"
+          >
+            <img src="/Final/Booking/Booking Images/rio_double.jpg" />
+            <p class="roomname" id="rioText15">Double Room</p>
+            <p class="roomdetail" id="rioText16">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="rioText17">Total Rooms: 50</p>
+            <p class="roomdetail" id="rioText18">Price: $58/night</p>
+            <p class="available" id="rioText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="rioText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeA"
+            price="109"
+            roomname="Rio de Janeiro Cabana"
+          >
+            <img src="/Final/Booking/Booking Images/rio_cabana.jpg" />
+            <p class="roomname" id="rioText21">Cabana (2 Double Beds + Pool)</p>
+            <p class="roomdetail" id="rioText22">Capacity: 4-6 people</p>
+            <p class="roomdetail" id="rioText23">Total Rooms: 30</p>
+            <p class="roomdetail" id="rioText24">Price: $109/night</p>
+            <p class="available" id="rioText25">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="rioText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="rome"
+        place1="europe"
+        place2="classic"
+        place3="bustle"
+      >
+        <img
+          src="/Final/Booking/Booking Images/it_flag.png"
+          alt="Italy"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/rome_main.jpg"
+          alt="Rome"
+          id="romePage"
+        />
+        <p class="destname" id="rome1">Rome, Italy</p>
+        <ul class="destdesc">
+          <li id="rome2">- Total Rooms: 290</li>
+          <li id="rome3">- Hotel Type:     Classic</li>
+          <li id="rome4">- Room Types: Single, Twin, Suite</li>
+          <li id="rome5">- Address:             200 Viale dei Funghi</li>
+          <li id="rome6">- Hotline:               +39 331-9238-9016</li>
+        </ul>
+      </div>
+      <div class="destPage" id="romeTrue">
+        <button class="destPageOff" id="romeOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/rome_main.jpg"
+            alt="Rome"
+          />
+          <p class="thePage1" id="romeText1">Rome, Italy</p>
+          <ul class="thePage2">
+            <li id="romeText2">- Total Rooms: 290</li>
+            <li id="romeText3">- Hotel Type:     Classic</li>
+            <li id="romeText4">
+              - Facilities:            Sky Bar, Sky Restaurant
+            </li>
+            <li id="romeText5">
+              - Hotspots:            Colosseum, Pantheon, St Peter's Basilica
+            </li>
+            <li id="romeText6">
+              - Address:               200 Viale dei Funghi
+            </li>
+            <li id="romeText7">- Hotline:               +39 331-9238-9016</li>
+            <li id="romeText8">
+              - Timezone:       UTC +2 / Central European Summer Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div class="roomtype" price="35" roomname="Rome Single">
+            <img src="/Final/Booking/Booking Images/rio_single.jpg" />
+            <p class="roomname" id="romeText9">Single Room</p>
+            <p class="roomdetail" id="romeText10">Capacity: 1-2 people</p>
+            <p class="roomdetail" id="romeText11">Total Rooms: 140</p>
+            <p class="roomdetail" id="romeText12">Price: $35/night</p>
+            <p class="available" id="romeText13">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="romeText14">
+              Select
+            </button>
+          </div>
+
+          <div class="roomtype" id="roomtypeA" price="58" roomname="Rome Twin">
+            <img src="/Final/Booking/Booking Images/berlin_twin.jpg" />
+            <p class="roomname" id="romeText15">Twin Room (2 Single Beds)</p>
+            <p class="roomdetail" id="romeText16">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="romeText17">Total Rooms: 100</p>
+            <p class="roomdetail" id="romeText18">Price: $58/night</p>
+            <p class="available" id="romeText19">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="romeText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeE"
+            price="109"
+            roomname="Rome Suite"
+          >
+            <img src="/Final/Booking/Booking Images/cape_suite.jpg" />
+            <p class="roomname" id="romeText21">Suite (4 Single Beds)</p>
+            <p class="roomdetail" id="romeText22">Capacity: 4-6 people</p>
+            <p class="roomdetail" id="romeText23">Total Rooms: 50</p>
+            <p class="roomdetail" id="romeText24">Price: $109/night</p>
+            <p class="available" id="romeText25">Available: Year-round</p>
+            <button class="select roomdetail" selectbtn="yes" id="romeText26">
+              Select
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest"
+        id="sydney"
+        place1="oceania"
+        place2="cruise"
+        place3="tranquil"
+      >
+        <img
+          src="/Final/Booking/Booking Images/au_flag.png"
+          alt="Australia"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/sydney_main.jpg"
+          alt="Sydney"
+          id="sydneyPage"
+        />
+        <p class="destname" id="syd1">Sydney, Australia</p>
+        <ul class="destdesc">
+          <li id="syd2">- Total Rooms: 105</li>
+          <li id="syd3">- Hotel Type:     Cruise Ships</li>
+          <li id="syd4">- Room Types: Inside, Balcony, Suite</li>
+          <li id="syd5">- Address:             49 Victorian Seaside</li>
+          <li id="syd6">- Hotline:               +61 428-384-388</li>
+        </ul>
+      </div>
+      <div class="destPage" id="sydneyTrue">
+        <button class="destPageOff" id="sydneyOff">✖</button>
+        <div class="general">
+          <img
+            class="destPagePic"
+            src="/Final/Booking/Booking Images/sydney_main.jpg"
+            alt="Sydney"
+          />
+          <p class="thePage1" id="sydText1">Sydney, Australia</p>
+          <ul class="thePage2">
+            <li id="sydText2">- Total Rooms: 105</li>
+            <li id="sydText3">- Hotel Type:     Cruise Ships</li>
+            <li id="sydText4">
+              - Facilities:            Library, Gym, Spa, Restaurant
+            </li>
+            <li id="sydText5">
+              - Hotspots:            Sydney Opera House, Sydney Harbour Bridge
+            </li>
+            <li id="sydText6">- Address:             49 Victorian Seaside</li>
+            <li id="sydText7">- Hotline:               +61 428-384-388</li>
+            <li id="sydText8">
+              - Timezone:       UTC +10 / Australian Eastern Standard Time
+            </li>
+          </ul>
+        </div>
+        <div class="roomtypediv">
+          <div
+            class="roomtype"
+            id="roomtypeC"
+            price="45"
+            roomname="Sydney Inside"
+          >
+            <img src="/Final/Booking/Booking Images/sydney_inside.jpeg" />
+            <p class="roomname" id="sydText9">Inside (1 Double Bed)</p>
+            <p class="roomdetail" id="sydText10">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="sydText11">Total Rooms: 50</p>
+            <p class="roomdetail" id="sydText12">Price: $45/night</p>
+            <p class="available" id="sydText13">Available: October only</p>
+            <button class="select roomdetail" avabtn="sydney" id="sydText14">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeE"
+            price="58"
+            roomname="Sydney Balcony"
+          >
+            <img src="/Final/Booking/Booking Images/halo_balcony.jpg" />
+            <p class="roomname" id="sydText15">Balcony (1 Double Bed)</p>
+            <p class="roomdetail" id="sydText16">Capacity: 2-3 people</p>
+            <p class="roomdetail" id="sydText17">Total Rooms: 40</p>
+            <p class="roomdetail" id="sydText18">Price: $58/night</p>
+            <p class="available" id="sydText19">Available: October only</p>
+            <button class="select roomdetail" avabtn="sydney" id="sydText20">
+              Select
+            </button>
+          </div>
+
+          <div
+            class="roomtype"
+            id="roomtypeD"
+            price="152"
+            roomname="Sydney Suite"
+          >
+            <img src="/Final/Booking/Booking Images/halo_suite.jpg" />
+            <p class="roomname" id="sydText21">Suite (2 Double Beds)</p>
+            <p class="roomdetail" id="sydText22">Capacity: 4-5 people</p>
+            <p class="roomdetail" id="sydText23">Total Rooms: 15</p>
+            <p class="roomdetail" id="sydText24">Price: $152/night</p>
+            <p class="available" avabtn="sydney" id="sydText25">
+              Available: October only
+            </p>
+            <button class="select roomdetail" id="sydText26">Select</button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="dest grayout"
+        id="tokyo"
+        place1="asia"
+        place2="disjointed"
+        place3="tranquil"
+      >
+        <img
+          src="/Final/Booking/Booking Images/jp_flag.png"
+          alt="Japan"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/tokyo_main.jpg"
+          alt="Tokyo"
+          id="tokyoPage"
+        />
+        <p class="destname" id="tokyo1">Tokyo, Japan</p>
+        <ul class="destdesc">
+          <li id="tokyo2">- Total Rooms: 65</li>
+          <li id="tokyo3">- Hotel Type:     Disjointed Buildings</li>
+          <li id="tokyo4">- Room Types: Bungalow</li>
+          <li id="tokyo5">- Address:             18 Attakai Mura</li>
+          <li id="tokyo6">- Hotline:               +81 3-8223-3902</li>
+        </ul>
+      </div>
+      <div
+        class="dest grayout"
+        id="venice"
+        place1="europe"
+        place2="deluxe"
+        place3="bustle"
+      >
+        <img
+          src="/Final/Booking/Booking Images/it_flag.png"
+          alt="Italy"
+          class="flag"
+        />
+        <img
+          class="destpic"
+          src="/Final/Booking/Booking Images/venice_main.jpg"
+          alt="Venice"
+          id="venPage"
+        />
+        <p class="destname" id="ven1">Venice, Italy</p>
+        <ul class="destdesc">
+          <li id="ven2">- Total Rooms: 220</li>
+          <li id="ven3">- Hotel Type:     Deluxe</li>
+          <li id="ven4">- Room Types: Single, Pres Suite, Cabana</li>
+          <li id="ven5">- Address:             4 Luce del Giorno</li>
+          <li id="ven6">- Hotline:               +39 235-6538-1073</li>
+        </ul>
+      </div>
+    </div>
+    <div class="checkoutdiv" id="cDiv">
+      <p id="checkouttext1">
+        You have booked a N/A from N/A to N/A for the price of N/A per night
+      </p>
+
+      <p id="checkouttext2">
+        If all information is correct, please enter your credit card details
+        below:
+      </p>
+
+      <p id="checkouttext3">Card Owner:</p>
+      <input id="cOwner" type="text" placeholder="James Smith" />
+
+      <p id="checkouttext4">Credit Card Number:</p>
+      <input
+        id="cNumber"
+        type="tel"
+        inputmode="numeric"
+        pattern="[0-9\s]{19}"
+        autocomplete="cc-number"
+        minlength="19"
+        maxlength="19"
+        placeholder="xxxx xxxx xxxx xxxx"
+      />
+
+      <p id="checkouttext5">Card Expire Date:</p>
+      <input
+        id="cExpire"
+        type="text"
+        placeholder="mm yyyy"
+        minlength="7"
+        maxlength="7"
+      />
+
+      <p id="checkouttext6">Card Verification Code:</p>
+      <input
+        id="cCVC"
+        type="tel"
+        inputmode="numeric"
+        pattern="[0-9]{3}"
+        minlength="3"
+        maxlength="3"
+        placeholder="xxx"
+      />
+      <button id="checkoutreal">Check out</button>
+      <button id="back">Go back</button>
+      <p id="checkouttext7">You can create an account to auto-fill this form</p>
+    </div>
+    <script src="./booking.js"></script>
+  </body>
+</html>

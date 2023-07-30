@@ -1,0 +1,97 @@
+/* .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .box1 {
+    background-color: antiquewhite;
+    width: 50%;
+    height: 80px;
+    font-size: 32px;
+  }
+  
+  .box2 {
+    background-color: rgb(111, 151, 204);
+    width: 50%;
+    height: 80px;
+    font-size: 32px;
+  } */
+  .menu{
+    display: none;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+  }
+  /* Navigation */
+  .navigation {
+    width: 100%;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+  }
+  
+  .item_container {
+    display: flex;
+  }
+  
+  .item_container .item, .menu{
+    padding: 20px 30px;
+    font-weight: bold;
+  }
+  
+  .item_container .item:hover {
+    background-color: gainsboro;
+    color: black;
+    cursor: grabbing;
+  }
+
+  .more{
+    padding: 20px 30px;
+    font-weight: bold;
+  }
+  
+  .search {
+    padding: 20px;
+  }
+  
+  .search:hover {
+    background-color: rgb(212, 79, 79);
+  }
+  .droplist{
+    position: absolute;
+    top: 59px;
+    left: 452px;
+    background-color: black;
+    height: 80px;
+    width: 120px;
+    text-align: center;
+    display: none;
+  }
+  ul{
+    list-style-type: none;
+  }
+  li{
+    border: 4px gainsboro solid;
+  }
+
+  @media screen and (max-width: 630px) {
+    .item, .search{
+        display: none;
+    }
+    .menu{
+        display: block;
+      }
+    .navigation{
+        /* flex-direction: row-reverse; */
+        justify-content: flex-end;
+        /* Hai cách đều đc */
+    }
+  }

@@ -1,0 +1,135 @@
+.menubar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 209, 44);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  z-index: 99;
+  animation: fadeIn 4s;
+}
+.menubar2 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 209, 44);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  z-index: 99;
+  animation: fadeIn 4s;
+}
+.menubar li {
+  display: inline;
+  float: left;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+}
+.menubar2 li {
+  display: inline;
+  float: right;
+  font-family: "Typo Round Regular Demo";
+  font-size: 22px;
+}
+.menubtn {
+  display: block;
+  padding: 8px;
+  margin: 5px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+.menubar li:hover,
+.menubar2 li:hover {
+  cursor: pointer;
+  background-color: rgb(255, 240, 71);
+}
+/*  */
+.bgimg {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0.25;
+  z-index: 0;
+  animation: fadeIn2 4s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@keyframes fadeIn3 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*  */
+.title,
+.subtitle {
+  z-index: 1;
+  font-family: "Best Valentina";
+  color: rgb(255, 209, 44);
+  background: -webkit-linear-gradient(#ffd865, #c36800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeIn 4s;
+}
+.title {
+  font-size: 125px;
+  -webkit-text-stroke: 1.5px darkgoldenrod;
+  top: 22%;
+  width: 100vw;
+  text-align: center;
+}
+.subtitle {
+  font-size: 48px;
+  -webkit-text-stroke: 1px darkgoldenrod;
+  top: 47%;
+  font-style: italic;
+}
+#book {
+  font-family: "Montserrat Regular";
+  font-size: 22px;
+  font-weight: 1000;
+  text-decoration: none;
+  position: fixed;
+  border-radius: 20px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 200px;
+  height: 50px;
+  background-color: #ffbf00;
+  color: rgb(0, 0, 0);
+  border: 2px rgb(170, 125, 12) solid;
+  animation: fadeIn3 6s;
+}
+#book:hover {
+  background-color: rgb(255, 240, 71);
+  cursor: pointer;
+}

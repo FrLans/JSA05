@@ -1,0 +1,108 @@
+* {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Montserrat Alternates";
+}
+p {
+  height: 80px;
+  display: inline;
+  color: #fff;
+}
+#bg {
+  background-color: black;
+  position: fixed;
+  left: 139px;
+  top: 190px;
+  height: 150px;
+  width: 488px;
+  border-radius: 18px;
+  background-image: linear-gradient(
+    to right,
+    rgb(60, 42, 127),
+    rgb(138, 53, 129)
+  );
+}
+#a {
+  background-color: black;
+  position: fixed;
+  left: 25%;
+  top: 30%;
+  transform: translate(-50%);
+  width: 400px;
+  height: 60px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#day,
+#hours,
+#minutes,
+#seconds,
+#c1,
+#c2,
+#c3 {
+  font-size: 10px;
+  color: rgb(174, 174, 174);
+  z-index: 1000;
+  position: fixed;
+  font-family: "Calibri";
+  font-weight: 800;
+}
+
+#day {
+  left: 240px;
+  top: 278px;
+}
+#hours {
+  left: 322px;
+  top: 278px;
+}
+#minutes {
+  left: 403px;
+  top: 278px;
+}
+#seconds {
+  left: 504px;
+  top: 278px;
+}
+
+#d {
+  position: fixed;
+  left: 50px;
+  top: -40px;
+}
+
+#h {
+  position: fixed;
+  left: 150px;
+  top: -40px;
+}
+
+#m {
+  position: fixed;
+  right: 150px;
+  top: -40px;
+}
+
+#s {
+  position: fixed;
+  right: 50px;
+  top: -40px;
+}
+
+#c1,
+#c2,
+#c3 {
+  font-size: 25px;
+  top: 215px;
+}
+
+#c1 {
+  left: 295px;
+}
+#c2 {
+  left: 375px;
+}
+#c3 {
+  left: 470px;
+}
